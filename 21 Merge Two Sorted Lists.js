@@ -1,4 +1,10 @@
-// Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+// Merge two sorted linked lists and return it as a new sorted list.The new list should be
+// made by splicing together the nodes of the first two lists.
+
+// Example:
+
+// Input: 1->2->4, 1->3->4
+// Output: 1->1->2->3->4->4
 
 // Hide Company Tags Amazon LinkedIn Apple Microsoft
 // Hide Tags Linked List
@@ -16,29 +22,28 @@
  * @param {ListNode} l2
  * @return {ListNode}
  */
-var mergeTwoLists = function(l1, l2) {
-    var p1 = l1;
-    var p2 = l2;
-    var fn = new ListNode(-1);
-    var p = fn;
-    
-    
-    while(p1 && p2){
-        if(p1.val >= p2.val){
-            p.next = p2;
-            p2 = p2.next;
-        } else {
-            p.next = p1;
-            p1 = p1.next;
-        }
-        p = p.next;
-    }
-    
-    if(p1){
-        p.next = p1;
+var mergeTwoLists = function (l1, l2) {
+  var p1 = l1;
+  var p2 = l2;
+  var fn = new ListNode(-1);
+  var p = fn;
+
+  while (p1 && p2) {
+    if (p1.val >= p2.val) {
+      p.next = p2;
+      p2 = p2.next;
     } else {
-        p.next = p2;
+      p.next = p1;
+      p1 = p1.next;
     }
-    
-    return fn.next;
+    p = p.next;
+  }
+
+  if (p1) {
+    p.next = p1;
+  } else {
+    p.next = p2;
+  }
+
+  return fn.next;
 };
